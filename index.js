@@ -28,7 +28,7 @@ app.post('/', async (req, res) => {
   const URI = req.body.myuri;
   console.log(URI);
   //connect to the database and log the connection
-  mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology:true})
+  await mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology:true})
     .then((data)=> {
         console.log("Connected to MongoDB Server")
     })
@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
         studentID: "300361840"
     })
 
-    newStudent.save()
+    await newStudent.save()
             .then((savedStudent)=> res.send(`<h1>Document  Added</h1>`))
             .catch((err)=> res.status(400).json("Error: " + err))
 
