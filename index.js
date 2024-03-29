@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
         studentID: "300361840"
     })
 
-    await newStudent.save()
+    newStudent.save()
             .then((savedStudent)=> res.send(`<h1>Document  Added</h1>`))
             .catch((err)=> res.status(400).json("Error: " + err))
 
